@@ -34,9 +34,9 @@ export default function DashboardPage() {
     } catch (error) {
       console.error("Error fetching user:", error);
     }
-  };
+  }, []);
 
-  const fetchApplications = async () => {
+  const fetchApplications = useCallback(async () => {
     try {
       const response = await fetch(`${API_URL}/api/my-applications`, {
         credentials: "include",
@@ -50,7 +50,15 @@ export default function DashboardPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    // Fetch user data if not passed from auth
+    if (!user) {
+      fetchUser();
+    }
+    fetchApplications();
+  }, [user, fetchUser, fetchApplications]);
 
   const stats = [
     { icon: Briefcase, label: "Applications", value: applications.length },
