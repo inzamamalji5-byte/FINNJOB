@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Search, MapPin, Clock, Zap, Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -30,11 +30,7 @@ export default function JobsPage() {
   const locations = ["all", "Helsinki", "Espoo", "Tampere", "Vantaa", "Remote"];
   const shiftTypes = ["all", "Part-time", "Flexible", "Gig"];
 
-  useEffect(() => {
-    fetchJobs();
-  }, [location, shiftType, instantPayoutOnly]);
-
-  const fetchJobs = async () => {
+  const fetchJobs = useCallback(async () => {
     setLoading(true);
     try {
       let url = `${API_URL}/api/jobs?`;
