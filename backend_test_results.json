@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-01-31T21:47:53.087205",
+  "timestamp": "2026-01-31T21:48:20.190755",
   "total_tests": 16,
-  "passed_tests": 13,
-  "success_rate": "81.2%",
+  "passed_tests": 16,
+  "success_rate": "100.0%",
   "results": [
     {
       "test": "Root API",
@@ -61,8 +61,8 @@
     },
     {
       "test": "Get Current User",
-      "success": false,
-      "details": "Expected 200, got 401 - {'detail': 'Not authenticated'}"
+      "success": true,
+      "details": ""
     },
     {
       "test": "Get Jobs for Application Test",
@@ -71,13 +71,13 @@
     },
     {
       "test": "Apply for Job (job_001)",
-      "success": false,
-      "details": "Expected 200, got 401 - {'detail': 'Not authenticated'}"
+      "success": true,
+      "details": ""
     },
     {
       "test": "Get My Applications",
-      "success": false,
-      "details": "Expected 200, got 401 - {'detail': 'Not authenticated'}"
+      "success": true,
+      "details": ""
     },
     {
       "test": "User Logout",
