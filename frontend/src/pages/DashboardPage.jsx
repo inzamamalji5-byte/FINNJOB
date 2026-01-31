@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -22,15 +22,7 @@ export default function DashboardPage() {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Fetch user data if not passed from auth
-    if (!user) {
-      fetchUser();
-    }
-    fetchApplications();
-  }, []);
-
-  const fetchUser = async () => {
+  const fetchUser = useCallback(async () => {
     try {
       const response = await fetch(`${API_URL}/api/auth/me`, {
         credentials: "include",
