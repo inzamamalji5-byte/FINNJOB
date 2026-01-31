@@ -34,22 +34,19 @@ class FinnJobAPITester:
         
         if headers:
             test_headers.update(headers)
-        
-        if self.session_token:
-            test_headers['Authorization'] = f'Bearer {self.session_token}'
 
         print(f"\n🔍 Testing {name}...")
         print(f"   URL: {url}")
         
         try:
             if method == 'GET':
-                response = requests.get(url, headers=test_headers)
+                response = self.session.get(url, headers=test_headers)
             elif method == 'POST':
-                response = requests.post(url, json=data, headers=test_headers)
+                response = self.session.post(url, json=data, headers=test_headers)
             elif method == 'PUT':
-                response = requests.put(url, json=data, headers=test_headers)
+                response = self.session.put(url, json=data, headers=test_headers)
             elif method == 'DELETE':
-                response = requests.delete(url, headers=test_headers)
+                response = self.session.delete(url, headers=test_headers)
 
             success = response.status_code == expected_status
             
