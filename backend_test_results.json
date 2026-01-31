@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-01-31T21:47:53.087205",
+  "total_tests": 16,
+  "passed_tests": 13,
+  "success_rate": "81.2%",
+  "results": [
+    {
+      "test": "Root API",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Platform Stats",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Get All Jobs",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Jobs Filter - Location",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Jobs Filter - Shift Type",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Jobs Filter - Instant Payout",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Get Jobs for Single Job Test",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Get Single Job (job_001)",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Contact Form Submission",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "User Registration",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "User Login",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Get Current User",
+      "success": false,
+      "details": "Expected 200, got 401 - {'detail': 'Not authenticated'}"
+    },
+    {
+      "test": "Get Jobs for Application Test",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Apply for Job (job_001)",
+      "success": false,
+      "details": "Expected 200, got 401 - {'detail': 'Not authenticated'}"
+    },
+    {
+      "test": "Get My Applications",
+      "success": false,
+      "details": "Expected 200, got 401 - {'detail': 'Not authenticated'}"
+    },
+    {
+      "test": "User Logout",
+      "success": true,
+      "details": ""
+    }
+  ]
+}
