@@ -1,34 +1,189 @@
-.App-logo {
-    height: 40vmin;
+/* FinnJob App Styles */
+
+/* Button hover effects */
+.btn-primary {
+    background-color: #0F172A;
+    color: #F8FAFC;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: rgba(15, 23, 42, 0.9);
+    transform: scale(1.02);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background-color: white;
+    border: 1px solid #E2E8F0;
+    color: #0F172A;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+/* Card hover effects */
+.job-card {
+    background: white;
+    border-radius: 1rem;
+    border: 1px solid #F1F5F9;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.job-card:hover {
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+}
+
+/* Feature card */
+.feature-card {
+    background: rgba(248, 250, 252, 0.5);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid #F1F5F9;
+    transition: background-color 0.3s;
+}
+
+.feature-card:hover {
+    background: white;
+}
+
+/* Badge styles */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.badge-default {
+    background-color: #F1F5F9;
+    color: #334155;
+}
+
+.badge-brand {
+    background-color: #CCFBF1;
+    color: #0D9488;
+    border: 1px solid #99F6E4;
+}
+
+/* Input styles */
+.input-finn {
+    height: 3rem;
+    border-radius: 0.75rem;
+    border: 1px solid #E2E8F0;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-finn:focus {
+    border-color: #2DD4BF;
+    box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.2);
+    outline: none;
+}
+
+/* Navbar glassmorphism */
+.navbar-glass {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+@supports not (backdrop-filter: blur(16px)) {
+    .navbar-glass {
+        background: rgba(255, 255, 255, 0.98);
+    }
+}
+
+/* Page transitions */
+.page-enter {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Staggered animations */
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 50ms; }
+.stagger > *:nth-child(3) { animation-delay: 100ms; }
+.stagger > *:nth-child(4) { animation-delay: 150ms; }
+.stagger > *:nth-child(5) { animation-delay: 200ms; }
+.stagger > *:nth-child(6) { animation-delay: 250ms; }
+
+/* Hero section decorations */
+.hero-blob-1 {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: #2DD4BF;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.2;
     pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
+.hero-blob-2 {
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 350px;
+    height: 350px;
+    background: #38BDF8;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+/* Section spacing */
+.section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
     }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Container */
+.container-finn {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
+@media (min-width: 640px) {
+    .container-finn {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
-    to {
-        transform: rotate(360deg);
+}
+
+@media (min-width: 1024px) {
+    .container-finn {
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 }
