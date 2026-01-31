@@ -46,7 +46,11 @@ export default function JobsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [location, shiftType, instantPayoutOnly]);
+
+  useEffect(() => {
+    fetchJobs();
+  }, [fetchJobs]);
 
   const filteredJobs = jobs.filter((job) => {
     if (!searchQuery) return true;
