@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -26,11 +26,7 @@ export default function JobDetailPage() {
   const [loading, setLoading] = useState(true);
   const [applying, setApplying] = useState(false);
 
-  useEffect(() => {
-    fetchJob();
-  }, [jobId]);
-
-  const fetchJob = async () => {
+  const fetchJob = useCallback(async () => {
     try {
       const response = await fetch(`${API_URL}/api/jobs/${jobId}`);
       if (!response.ok) throw new Error("Job not found");
@@ -43,7 +39,11 @@ export default function JobDetailPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [jobId, navigate]);
+
+  useEffect(() => {
+    fetchJob();
+  }, [fetchJob]);
 
   const handleApply = async () => {
     setApplying(true);
@@ -92,6 +92,23 @@ export default function JobDetailPage() {
   }
 
   if (!job) return null;
+
+  const renderRequirement = (req, idx) => (
+    <li key={idx} className="flex items-start gap-3 text-finn-slate-600">
+      <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" />
+      <span>{req}</span>
+    </li>
+  );
+
+  const renderBenefit = (benefit, idx) => (
+    <Badge
+      key={idx}
+      variant="secondary"
+      className="bg-finn-slate-100 text-finn-slate-700 px-4 py-2 text-sm"
+    >
+      {benefit}
+    </Badge>
+  );
 
   return (
     <main className="flex-1 pt-20" data-testid="job-detail-page">
@@ -180,12 +197,7 @@ export default function JobDetailPage() {
                 Requirements
               </h2>
               <ul className="space-y-3">
-                {job.requirements.map((req, index) => (
-                  <li key={index} className="flex items-start gap-3 text-finn-slate-600">
-                    <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" />
-                    <span>{req}</span>
-                  </li>
-                ))}
+                {job.requirements.map(renderRequirement)}
               </ul>
             </div>
 
@@ -195,15 +207,7 @@ export default function JobDetailPage() {
                 What You'll Get
               </h2>
               <div className="flex flex-wrap gap-3">
-                {job.benefits.map((benefit, index) => (
-                  <Badge
-                    key={index}
-                    variant="secondary"
-                    className="bg-finn-slate-100 text-finn-slate-700 px-4 py-2 text-sm"
-                  >
-                    {benefit}
-                  </Badge>
-                ))}
+                {job.benefits.map(renderBenefit)}
               </div>
             </div>
           </motion.div>
